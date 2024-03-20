@@ -29,17 +29,17 @@ struct ContentView: View {
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
-                ToolbarItem {
+                ToolbarItem (placement: .navigationBarTrailing){
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
-            }
+            }//: TOOLBAR
             Text("Select an item")
-        }
+        }//: NAVIGATION VIEW
     }
 
     private func addItem() {
