@@ -7,12 +7,20 @@
 
 import SwiftUI
 
-struct Constants: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+// MARK : - FORMATTER
+let itemFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    formatter.timeStyle = .medium
+    return formatter
+}()
+
+// MARK: - UI
+
+var backgroundGradient: LinearGradient {
+    return LinearGradient(gradient: Gradient(colors: [Color.pink, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
-#Preview {
-    Constants()
-}
+// MARK: - UX
+
+

@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-struct HideKeyboardExtension: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard(){
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from : nil, for: nil)
+        }
     }
-}
-
-#Preview {
-    HideKeyboardExtension()
-}
+#endif
