@@ -124,15 +124,7 @@ struct ContentView: View {
                     
                     List {
                         ForEach(items) { item in
-                            VStack(alignment : .leading) {
-                                Text(item.task ?? "")
-                                    .font(.headline)
-                                    .fontWeight(.bold)
-                                
-                                Text(item.timestamp!, formatter: itemFormatter)
-                                    .font(.footnote)
-                                    .foregroundStyle(.gray)
-                            }
+                            ListRowItemView(item: item)
                         }
                         .onDelete(perform: deleteItems)
                     }
@@ -147,9 +139,14 @@ struct ContentView: View {
                    
 
                 }//: VSTACK
+                .blur(radius: showNewTaskItem ? 8.0 : 0, opaque: false)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut(duration: 0.5))
                 
                 if showNewTaskItem{
-                    BlankView()
+                    BlankView(
+                        backgroundColor: isDarkMode ? Color.black : Color.gray,
+                        backroundOpacity: isDarkMode ? 0.3 : 0.5 )
                         .onTapGesture{
                             withAnimation(){
                                 showNewTaskItem = false
@@ -173,7 +170,7 @@ struct ContentView: View {
 //            #endif
 //            }//: TOOLBAR
             .background(
-                BackgroundImageView()
+                BackgroundImageView().blur(radius: showNewTaskItem ? 8.0 : 0, opaque: false)
             )
             .background(
                 backgroundGradient.ignoresSafeArea(.all)
